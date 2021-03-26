@@ -11,29 +11,56 @@
 // Fulton Schools of Engineering
 // Arizona State University, Tempe, AZ 85287-8809
 //**************************************************************************************************
+
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
-    Main main = new Main();
-    main.run();
+    public static void main(String[] pArgs) {
+        new Main().run();
+    }
 
+    public Main() {
+    }
 
-    ArrayList<Student> studentList = new ArrayList<>(null);
-    String input = "p02-students.txt";
-    Scanner studentData;
+    private void run() {
+        ArrayList<OnlineStudent> onlineStudents = new ArrayList<>();
+        ArrayList<OnCampusStudent> onCampusStudents = new ArrayList<>();
+        String input = "";
+        Scanner studentData;
 
-    {
-        try {
-            studentData = new Scanner(new File(input));
-        } catch (FileNotFoundException e) {
-            System.out.println("Sorry, couldn not open " + input + " for reading. Stopping...");
-            e.printStackTrace();
-            System.exit(-1);
+        studentData = getFile("p02-students.txt");
+        while (studentData.hasNext()) {
+            String studentStatus = studentData.next();
+            if (studentStatus.equals("O")) {
+                OnlineStudent onlineStudent = new OnlineStudent(studentData.next(), studentData.next(), studentData.next());
+                onlineStudents.add(onlineStudent);
+                System.out.println(onlineStudent.toString());
+                studentData.nextLine();
+
+            } else if (studentStatus.equals("C")) {
+                OnCampusStudent onCampusStudent = new OnCampusStudent(studentData.next(), studentData.next(), studentData.next());
+                onCampusStudents.add(onCampusStudent);
+                System.out.println(onCampusStudent.toString());
+                studentData.nextLine();
+            } else {
+                studentData.nextLine();
+                System.out.println("This is not a online student");
+            }
         }
+    }
+
+    public Scanner getFile(String fileName) {
+        Scanner scanner = new Scanner("");
+        try {
+            File file = new File(fileName);
+            scanner = new Scanner(file);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        return scanner;
     }
 
     /**
@@ -81,16 +108,14 @@ public class Main {
      * Calculates the tuition for each Student in pStudentList. Write an enhanced for loop that
      * iterates over each Student in pStudentList. For each Student, call calcTuition() on that
      * Student object. Note: this is a polymorphic method call. What does that mean?
-     *
+     * <p>
      * PSEUDOCODE
      * Enhanced ForEach student in pStudentList Do
-     *     student.calcTuition()
+     * student.calcTuition()
      * End Enhanced ForEach
      */
-    private void calcTuition(ArrayList<Student> pStudentList) {
-        for (Student student : pStudentList) {
-            student.calcTuition();
-        }
+    private void calcTuition() {
+
     }
 
     /**
@@ -112,7 +137,7 @@ public class Main {
      * Close the scanner
      * Return studentList
      */
-    ???
+
 
     /**
      * Reads the information for an on-campus student from the input file.
@@ -134,7 +159,7 @@ public class Main {
      * Call setCredits(credits) on student
      * Return student
      */
-    ???
+
 
     /**
      * Reads the information for an online student from the input file.
@@ -154,7 +179,7 @@ public class Main {
      * Call setCredits(credits) on student
      * Return student
      */
-    ???
+
 
     /**
      * Writes the output to "p02-tuition.txt" per the software requirements. Note that this method 
@@ -168,6 +193,6 @@ public class Main {
      * End Enhanced ForEach
      * Close the output file
      */
-    ???
+
 
 }

@@ -4,10 +4,8 @@ public class OnCampusStudent extends Student{
    private int mResident;
    private double mProgramFee;
 
-    public OnCampusStudent(String pId, String pFirstName, String pLastName, int mResident, double mProgramFee) {
+    public OnCampusStudent(String pId, String pFirstName, String pLastName) {
         super(pId, pFirstName, pLastName);
-        this.mResident = mResident;
-        this.mProgramFee = mProgramFee;
     }
 
     @Override

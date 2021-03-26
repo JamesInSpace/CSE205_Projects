@@ -15,13 +15,21 @@
 //**************************************************************************************************
 public abstract class Student implements Comparable<Student> {
 
-    int mId;
-    String mFirstName;
-    String mLastName;
-    int mCredits;
-    double mTuition;
+    private String mId;
+    private String mFirstName;
+    private String mLastName;
+    private int mCredits;
+    private double mTuition;
 
-    public Student(String pId, String pFirstName, String pLastName){
+
+    /**
+     * Creates a Student object and initializes the mId, mFirstName, and mLastName instance
+     * variables.
+     */
+    public Student(String mId, String mFirstName, String mLastName) {
+        this.mId = mId;
+        this.mFirstName = mFirstName;
+        this.mLastName = mLastName;
     }
 
     public void calcTuition(){
@@ -31,12 +39,14 @@ public abstract class Student implements Comparable<Student> {
     /**
      * Accessor method for mId.
      */
-    public int getId() {
+    public String getId() {
         return mId;
     }
 
-
-    public void setId(int mId) {
+    /**
+     * Mutator method for mId.
+     */
+    public void setId(String mId) {
         this.mId = mId;
     }
 
@@ -47,15 +57,23 @@ public abstract class Student implements Comparable<Student> {
         return mFirstName;
     }
 
-
+    /**
+     * Mutator method for mFirstName.
+     */
     public void setFirstName(String mFirstName) {
         this.mFirstName = mFirstName;
     }
 
+    /**
+     * Accessor method for mLastName.
+     */
     public String getLastName() {
         return mLastName;
     }
 
+    /**
+     * Mutator method for mLastName.
+     */
     public void setLastName(String mLastName) {
         this.mLastName = mLastName;
     }
@@ -71,6 +89,9 @@ public abstract class Student implements Comparable<Student> {
         this.mCredits = mCredits;
     }
 
+    /**
+     * Accessor method for mTuition.
+     */
     public double getTuition() {
         return mTuition;
     }
@@ -82,11 +103,6 @@ public abstract class Student implements Comparable<Student> {
         this.mTuition = mTuition;
     }
 
-    /**
-     * Creates a Student object and initializes the mId, mFirstName, and mLastName instance
-     * variables.
-     */
-    ???
 
     /**
      * calcTuition() is to be implemented by subclasses of Student. Remember that abstract methods
@@ -96,7 +112,6 @@ public abstract class Student implements Comparable<Student> {
      * tuition for an OnCampusStudent is different than how we calculate the tuition for an Online-
      * Student.
      */
-    ???
 
     /**
      * The java.lang.Comparable<T> interface declares one method int compareTo(T obj) that must be
@@ -114,47 +129,22 @@ public abstract class Student implements Comparable<Student> {
      * method on the two mId strings of 'this' Student and pStudent and return whatever that method
      * returns.
      */
+
     @Override
     public int compareTo(Student pStudent) {
-        return getId().compareTo(pStudent.getId());
+        if (Integer.parseInt(this.mId) < Integer.parseInt(pStudent.mId)) {
+            return -1;
+        } else if (Integer.parseInt(this.mId) == Integer.parseInt(pStudent.mId)){
+            return 0;
+        } else {
+            return 1;
+        }
     }
 
-
-
-
-
-
-
-
-    /**
-     * Accessor method for mLastName.
-     */
-
-
-    /**
-     * Accessor method for mTuition.
-     */
-
-
-    /**
-     * Mutator method for mCredits.
-     */
-
-
-    /**
-     * Mutator method for mFirstName.
-     */
-
-
-    /**
-     * Mutator method for mId.
-     */
-
-
-    /**
-     * Mutator method for mLastName.
-     */
-
-
-
+    @Override
+    public String toString() {
+        return ("ID: " + this.getId() +
+                " FirstName: " + this.getFirstName()+
+                "LastName: " + this.getLastName());
+    }
 }
