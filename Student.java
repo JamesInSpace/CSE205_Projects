@@ -140,11 +140,4 @@ public abstract class Student implements Comparable<Student> {
             return 1;
         }
     }
-
-    @Override
-    public String toString() {
-        return ("ID: " + this.getId() +
-                " FirstName: " + this.getFirstName()+
-                "LastName: " + this.getLastName());
-    }
 }

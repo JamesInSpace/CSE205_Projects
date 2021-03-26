@@ -2,11 +2,13 @@
 // CLASS: TuitionConstants
 //
 // DESCRIPTION
-// Constants that are used in calculating the tuition for on-campus and online students. Use these
-// constants in the OnCampusStudent and OnlineStudent classes.
-//
+// The TuitionConstants class for Project 2.
+// Program designed to calculate tuition for students and output a sorted list of the data
+
 // AUTHOR
-// Kevin R. Burger (burgerk@asu.edu)
+// Myron Walters  (mlwalte3@asu.edu)
+// Mark Bushong   (mdbushon@asu.edu)
+// James Laurita  (jrlaurit@asu.edu)
 // Computer Science & Engineering
 // School of Computing, Informatics, and Decision Systems Engineering
 // Fulton Schools of Engineering
